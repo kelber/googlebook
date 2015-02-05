@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Googlebook</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+<nav>
+      <div class="nav-wrapper #e53935 red darken-1">
+          <div class="container">
+          <%= link_to 'Bookstore', root_path , class: "brand-logo" %>
+        <ul id="nav-mobile" class="right side-nav">
+            <% if user_signed_in? %>
+                <li><%= link_to 'Conta', edit_user_registration_path %></li>
+                <li><%= link_to 'Log Out', destroy_user_session_path, method: :delete %></li> 
+
+
+
+            <% else %>
+             
+                <li><%= link_to 'Cadastre-se', new_user_registration_path %></li>
+                <li><%= link_to 'Log In', new_user_session_path %></li> 
+
+            <% end %>
+
+
+        </ul>
+        
+
+        <!-- Include this line below -->
+        <a class="button-collapse" href="#" data-activates="nav-mobile"><i class="mdi-navigation-menu"></i></a>
+        <!-- End -->
+
+        </div>
+      </div>
+    </nav>
+  <div class="container">      
+
+
+
+<%= yield %>
+
+
+
+</div>
+
+
+ <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+      <script type="text/javascript" src="js/materialize.min.js"></script>
+
+</body>
+</html>
